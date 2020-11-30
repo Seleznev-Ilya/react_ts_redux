@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "ubunto r";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../asset/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: "ubunto i";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../asset/fonts/Ubuntu-Italic.ttf");
+}
+
+@font-face {
+  font-family: "ubunto l";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../asset/fonts/Ubuntu-Light.ttf");
+}
+p {
+  font-family: "ubunto r", sans-serif;
+}
+.opacity {
+  opacity: 0;
+}
+.underline {
+  box-shadow: 0 1px 0px #00000010;
+}
+.focus {
+  transition: 0.4s ease-in-out;
+  box-shadow: 0 1px 4px 100vh #00000018;
+}
