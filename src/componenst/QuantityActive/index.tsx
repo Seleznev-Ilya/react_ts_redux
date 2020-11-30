@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector } from "react-redux";
 const QuantityActiveNum = () => {
   const itemlist = useSelector((store: any) => store.todoList);
@@ -15,5 +15,5 @@ const QuantityActiveNum = () => {
     </p>
   );
 };
-const QuantityActive = React.memo(QuantityActiveNum);
+const QuantityActive = memo(QuantityActiveNum);
 export default QuantityActive;

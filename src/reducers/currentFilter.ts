@@ -1,14 +1,15 @@
-let initialStore = localStorage.getItem("STORE")
-  ? JSON.parse(localStorage.getItem("STORE") || "all").currentFilter
-  : "all";
-const currentFilter = (state = initialStore, actions: any) => {
+import { SHOW_ALL } from "../constants/filter";
+import { SHOW_ACTIVE } from "../constants/filter";
+import { SHOW_COMPLETED } from "../constants/filter";
+
+const currentFilter = (state = SHOW_ALL, actions: any) => {
   switch (actions.type) {
-    case "all":
-      return (state = "all");
-    case "completed":
-      return (state = "completed");
-    case "active":
-      return (state = "active");
+    case SHOW_ALL:
+      return SHOW_ALL;
+    case SHOW_COMPLETED:
+      return SHOW_COMPLETED;
+    case SHOW_ACTIVE:
+      return SHOW_ACTIVE;
     default:
       return state;
   }

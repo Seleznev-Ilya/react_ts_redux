@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import QuantityActive from "../QuantityActive";
 import Completed from "../Completed";
@@ -13,5 +13,5 @@ const FooterComponent = () => {
     </div>
   );
 };
-const Footer = React.memo(FooterComponent);
+const Footer = memo(FooterComponent);
 export default Footer;

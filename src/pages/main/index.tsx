@@ -1,30 +1,13 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, memo } from "react";
 import { useSelector } from "react-redux";
-
-import { connect } from "react-redux";
 
 import TodoReceiver from "../../componenst/TodoReceiver";
 import TodoList from "../../componenst/TodoList";
 import Footer from "../../componenst/Footer";
 import "./style.scss";
 
-interface Props {
-  todoList: [
-    key: {
-      id: number;
-      payload: string;
-      completed: boolean;
-    }
-  ];
-}
-
-const Main = ({ todoList }: Props) => {
-  const currentStore = useSelector((store: any) => store);
-
-  useEffect(() => {
-    localStorage.setItem("STORE", JSON.stringify(currentStore));
-  }, [currentStore]);
+const Main = () => {
+  const todoList = useSelector((store: any) => store.todoList);
 
   return (
     <div className="todo__main">
@@ -34,9 +17,5 @@ const Main = ({ todoList }: Props) => {
     </div>
   );
 };
-const mapStateToProps = (store: any) => {
-  return {
-    todoList: store.todoList,
-  };
-};
-export default connect(mapStateToProps)(Main);
+
+export default memo(Main);

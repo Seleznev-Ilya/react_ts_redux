@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { FILTER } from "../../constants/filter";
 import SubFilter from "../SubFilter";
 
@@ -11,5 +11,5 @@ const FooterFilter = () => {
     </div>
   );
 };
-const Filter = React.memo(FooterFilter);
+const Filter = memo(FooterFilter);
 export default Filter;

@@ -5,11 +5,7 @@ import { DELET_ITEM_TASK } from "../constants";
 import { SELECT_ALL_ITEMS_TASK } from "../constants";
 import { DELETE_SELECTED_ITEMS_TASK } from "../constants";
 
-let initialStore = localStorage.getItem("STORE")
-  ? JSON.parse(localStorage.getItem("STORE") || "").todoList
-  : [];
-
-const todoList = (state = initialStore, actions: any) => {
+const todoList = (state = [], actions: any) => {
   switch (actions.type) {
     case ADD_NEWONE_TASK:
       return [

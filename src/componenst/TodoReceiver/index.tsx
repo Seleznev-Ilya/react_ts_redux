@@ -1,25 +1,15 @@
-import React, { useState } from "react";
-
-import { connect } from "react-redux";
+import React, { useState, memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { addTodo } from "../../actions";
 import { selectAllTodo } from "../../actions";
 
-import InputMain from "../InputMain";
-
+import Textinput from "../TextInput";
 import selectImg from "../../asset/images/select.svg";
 import unselectImg from "../../asset/images/unselect.svg";
 
-interface Props {
-  dispatch: any;
-  todoList: [
-    key: {
-      id: number;
-      payload: string;
-      completed: boolean;
-    }
-  ];
-}
-const TodoReceiverComponent = ({ todoList, dispatch }: Props) => {
+const TodoReceiver = () => {
+  const todoList = useSelector((store: any) => store.todoList);
+  const dispatch = useDispatch();
   const [selectButton, setSelectButton] = useState(true);
 
   const selectButtonHendel = () => {
@@ -34,14 +24,9 @@ const TodoReceiverComponent = ({ todoList, dispatch }: Props) => {
         src={selectButton ? unselectImg : selectImg}
         alt="selectImg"
       />
-      <InputMain placeHolder={"Add task here"} action={addTodo} />
+      <Textinput placeHolder={"Add task here"} action={addTodo} />
     </div>
   );
 };
-const mapStateToProps = (store: any) => {
-  return {
-    todoList: store.todoList,
-  };
-};
-const TodoReceiver = React.memo(TodoReceiverComponent);
-export default connect(mapStateToProps)(TodoReceiver);
+
+export default memo(TodoReceiver);

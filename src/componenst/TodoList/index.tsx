@@ -1,19 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { memo } from "react";
 import TodoItem from "../../componenst/TodoItem";
 import { useSelector } from "react-redux";
 
-interface Props {
-  todoList: [
-    key: {
-      id: number;
-      payload: string;
-      completed: boolean;
-    }
-  ];
-}
-const TodoList = ({ todoList }: Props) => {
+const TodoList = () => {
   const currentFilter = useSelector((store: any) => store.currentFilter);
+  const todoList = useSelector((store: any) => store.todoList);
   const storeFiltered = (store: any, currentState: string) => {
     let arrStore;
     currentState === "all"
@@ -33,9 +24,5 @@ const TodoList = ({ todoList }: Props) => {
     </div>
   );
 };
-const mapStateToProps = (store: any) => {
-  return {
-    todoList: store.todoList,
-  };
-};
-export default connect(mapStateToProps)(TodoList);
+
+export default memo(TodoList);

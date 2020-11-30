@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import InputMain from "../InputMain";
+import React, { useState, memo } from "react";
+import Textinput from "../TextInput";
 
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleTodo } from "../../actions";
 import { editTodo } from "../../actions";
 import { deletTodo } from "../../actions";
@@ -12,10 +12,10 @@ import crossImg from "../../asset/images/cross.svg";
 
 interface Props {
   itemObj: any;
-  dispatch: any;
 }
 
-const TodoItemTask = ({ itemObj, dispatch }: Props) => {
+const TodoItem = ({ itemObj }: Props) => {
+  const dispatch = useDispatch();
   const [edir, setEdit] = useState<boolean>(true);
 
   const toggleHendel = () => {
@@ -45,7 +45,7 @@ const TodoItemTask = ({ itemObj, dispatch }: Props) => {
           </p>
         ) : (
           <div>
-            <InputMain
+            <Textinput
               placeHolder={""}
               action={editTodo}
               actionArguments={itemObj}
@@ -61,5 +61,5 @@ const TodoItemTask = ({ itemObj, dispatch }: Props) => {
     </div>
   );
 };
-const TodoItem = React.memo(TodoItemTask);
-export default connect()(TodoItem);
+
+export default memo(TodoItem);

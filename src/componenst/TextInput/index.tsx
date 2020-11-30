@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
-import { connect } from "react-redux";
+import React, { useCallback, memo } from "react";
+import { useDispatch } from "react-redux";
 
 interface Props {
-  dispatch: any;
   placeHolder: string;
   action: (...a: any) => { type: string; payload: string; id?: number };
   actionArguments?: {
@@ -13,14 +12,14 @@ interface Props {
   deleteHendler?: () => any;
 }
 
-const InputMainComponent = ({
-  dispatch,
+const Textinput = ({
   placeHolder,
   action,
   actionArguments,
   toggleTitleState,
   deleteHendler,
 }: Props) => {
+  const dispatch = useDispatch();
   let input: any;
   const initialvalu = actionArguments ? actionArguments.payload : "";
 
@@ -52,5 +51,5 @@ const InputMainComponent = ({
     </form>
   );
 };
-const InputMain = React.memo(InputMainComponent);
-export default connect()(InputMain);
+
+export default memo(Textinput);

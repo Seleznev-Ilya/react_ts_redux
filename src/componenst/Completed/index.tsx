@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import { DeleteSelectedTodo } from "../../actions";
 const CompletedComponent = () => {
@@ -12,6 +12,6 @@ const CompletedComponent = () => {
     </p>
   );
 };
-const Completed = React.memo(CompletedComponent);
+const Completed = memo(CompletedComponent);
 
 export default Completed;
